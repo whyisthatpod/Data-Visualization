@@ -1,0 +1,28 @@
+# Data = https://www.kaggle.com/datasets/uciml/mushroom-classification
+# https://www.codecademy.com/paths/data-analyst/tracks/dsf-data-visualization-fundamentals-with-python/modules/dsf-visualizing-categorical-data/projects/mushroom-categories-project
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import codecademylib3
+
+# load in the data
+df = pd.read_csv("mushroom_data.csv")
+print(df.head())
+
+# list of all column headers
+columns = df.columns.tolist()
+for column in columns:
+  #print(column) - used to make sure for loop working
+  sns.countplot(df[column], order = df[column].value_counts().index)
+  # rotate value labels to not overlap and increase font size
+  plt.xticks(rotation = 30, fontsize = 10)
+  # increase variable label font
+  plt.xlabel(column, fontsize = 12)
+  plt.title(column + ' Value Counts')
+  plt.show()
+  plt.clf()
+
+
+
+
